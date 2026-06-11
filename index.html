@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern World History — Garima's Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-light: #3d3d5c;
+    --gold: #c9a84c;
+    --gold-light: #f0d98a;
+    --gold-pale: #fdf6e3;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --border: #e8e0cc;
+    --red-accent: #8b2635;
+    --teal-accent: #1a6b72;
+    --shadow: 0 2px 12px rgba(26,26,46,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 2rem;
+    height: 56px;
+    overflow-x: auto;
+  }
+  nav .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+    margin-right: 2rem;
+    letter-spacing: 0.01em;
+  }
+  nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0 14px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  nav a:hover, nav a.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    padding: 64px 2rem 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .unit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .unit-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .unit-card:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .unit-card .num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .unit-card .name {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+  }
+
+  /* PAGE LAYOUT */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .page-header {
+    background: var(--ink);
+    padding: 48px 2rem 40px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .page-header .unit-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .page-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 80px;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 32px 0;
+  }
+  .toc h3 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .toc ol {
+    padding-left: 20px;
+  }
+  .toc li {
+    margin-bottom: 4px;
+  }
+  .toc a {
+    font-size: 13px;
+    color: var(--teal-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .toc a:hover { color: var(--gold); }
+  .toc .sub {
+    padding-left: 16px;
+    list-style: none;
+    margin-top: 4px;
+  }
+  .toc .sub li::before {
+    content: '→ ';
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* TOPIC SECTIONS */
+  .topic-section {
+    margin: 40px 0;
+    scroll-margin-top: 72px;
+  }
+  .topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .topic-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* SUB-SECTIONS */
+  .sub-section {
+    margin: 28px 0;
+  }
+  .sub-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+    padding-left: 14px;
+    border-left: 3px solid var(--gold);
+  }
+  .sub-sub-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-light);
+    margin: 14px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* TEXT CONTENT */
+  .prose {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #2d2d3e;
+  }
+  .prose p { margin-bottom: 10px; }
+
+  /* LISTS */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 16px;
+  }
+  .bullet-list li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #2d2d3e;
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+  }
+
+  /* HIERARCHY DISPLAY */
+  .hierarchy {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Inter', sans-serif;
+  }
+  .hierarchy .level {
+    color: var(--gold-light);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 20px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    text-align: center;
+    min-width: 160px;
+  }
+  .hierarchy .arrow {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  /* INFO CARDS */
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    box-shadow: var(--shadow);
+  }
+  .info-card.highlight {
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    background: var(--gold-pale);
+  }
+  .info-card.danger {
+    border-left: 4px solid var(--red-accent);
+    border-radius: 0 8px 8px 0;
+  }
+  .info-card.teal {
+    border-left: 4px solid var(--teal-accent);
+    border-radius: 0 8px 8px 0;
+  }
+  .info-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .info-card.danger h4 { color: var(--red-accent); }
+  .info-card.teal h4 { color: var(--teal-accent); }
+
+  /* IMPORTANT QUESTIONS */
+  .questions-section {
+    background: var(--ink);
+    margin: 48px -2rem 0;
+    padding: 40px 2rem;
+  }
+  .questions-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .question-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .question-hdr {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+  .question-hdr:hover { background: rgba(201,168,76,0.08); }
+  .question-hdr .q-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .question-hdr .q-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .question-hdr .q-arrow {
+    color: var(--gold);
+    font-size: 18px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .question-hdr.open .q-arrow { transform: rotate(180deg); }
+  .question-body {
+    display: none;
+    padding: 0 20px 20px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .question-body.open { display: block; }
+  .question-body .ans-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .question-body .ans-text {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    margin-bottom: 8px;
+  }
+  .question-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 12px;
+  }
+  .question-body ul li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    padding: 3px 0 3px 16px;
+    position: relative;
+  }
+  .question-body ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* MEMORY TRICK */
+  .memory-trick {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+  .memory-trick::before {
+    content: '💡 Memory Trick: ';
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* GRID FOR LEADERS */
+  .leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .leader-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: 0 0 8px 8px;
+    padding: 16px;
+  }
+  .leader-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .leader-role {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .leader-desc {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* CAUSES TABLE */
+  .causes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .cause-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .cause-item .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .cause-item .text {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* EFFECTS SPLIT */
+  .effects-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) { .effects-split { grid-template-columns: 1fr; } }
+  .effect-col {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .effect-col.pos { border-top: 3px solid #2a7a4b; }
+  .effect-col.neg { border-top: 3px solid var(--red-accent); }
+  .effect-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  .effect-col.pos h4 { color: #2a7a4b; }
+  .effect-col.neg h4 { color: var(--red-accent); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 2px solid var(--gold);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Modern World History</div>
+  <a href="#" class="active" onclick="showPage('home',this)">Home</a>
+  <a href="#" onclick="showPage('unit1',this)">Unit I</a>
+  <a href="#" onclick="showPage('unit2',this)">Unit II</a>
+  <a href="#" onclick="showPage('unit3',this)">Unit III</a>
+  <a href="#" onclick="showPage('unit4',this)">Unit IV</a>
+</nav>
+
+<!-- ==================== HOME ==================== -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-eyebrow">Garima's Study Notes — University of Rajasthan</div>
+    <h1>Modern <span>World History</span></h1>
+    <p>All four units, fully covered — content, explanations, and important exam questions.</p>
+    <div class="unit-cards">
+      <a class="unit-card" href="#" onclick="showPage('unit1',null)">
+        <div class="num">UNIT I</div>
+        <div class="name">Renaissance, Reformation, Revolutions & Napoleon</div>
+      </a>
+      <a class="unit-card" href="#" onclick="showPage('unit2',null)">
+        <div class="num">UNIT II</div>
+        <div class="name">Industrial Revolution, Nationalism & Modernisation of Japan</div>
+      </a>
+      <a class="unit-card" href="#" onclick="showPage('unit3',null)">
+        <div class="num">UNIT III</div>
+        <div class="name">Imperialism, Russian Revolution, Depression & Fascism</div>
+      </a>
+      <a class="unit-card" href="#" onclick="showPage('unit4',null)">
+        <div class="num">UNIT IV</div>
+        <div class="name">WWII, UNO, Cold War, China 1949 & Civil Rights</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== UNIT I ==================== -->
+<div class="page" id="page-unit1">
+  <div class="page-header">
+    <div class="unit-label">Unit I · 14th–18th Century</div>
+    <h2>Renaissance, Reformation, Feudalism to Capitalism &amp; Revolutions</h2>
+  </div>
+  <div class="content-wrapper">
+
+    <div class="toc">
+      <h3>Topics in this Unit</h3>
+      <ol>
+        <li><a href="#u1-renaissance">Renaissance &amp; Beginning of the Modern Era</a></li>
+        <li><a href="#u1-reformation">Reformation &amp; Counter-Reformation</a></li>
+        <li><a href="#u1-feudalism">Economic Changes: Feudalism to Capitalism</a></li>
+        <li><a href="#u1-american">American Revolution (1775–1783)</a></li>
+        <li><a href="#u1-french">French Revolution (Most Important)</a></li>
+        <li><a href="#u1-napoleon">Napoleon Bonaparte: Rise &amp; Downfall</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. RENAISSANCE -->
+    <div class="topic-section" id="u1-renaissance">
+      <div class="topic-title"><span class="topic-num">1</span>Renaissance &amp; Beginning of the Modern Era</div>
+
+      <div class="info-card highlight">
+        <h4>Introduction</h4>
+        <p class="prose">The Renaissance was a cultural, intellectual, artistic, and scientific movement that began in Italy during the 14th century and spread throughout Europe until the 17th century. The word "Renaissance" means <strong>rebirth</strong> — referring to the revival of the classical knowledge, art, literature, and philosophy of Ancient Greece and Rome. It marked the transition from the Medieval Age to the Modern Age.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes of the Renaissance</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Fall of Constantinople (1453)</div><div class="text">Ottoman Turks captured Constantinople. Greek scholars fled to Italy carrying ancient manuscripts and classical learning, stimulating intellectual activity.</div></div>
+          <div class="cause-item"><div class="label">Growth of Trade &amp; Commerce</div><div class="text">Italian city-states — Florence, Venice, Genoa — became wealthy. Rich families like the Medici financed artists, scholars, and writers.</div></div>
+          <div class="cause-item"><div class="label">Printing Press (~1450)</div><div class="text">Johannes Gutenberg's printing press made books cheaper and accessible. Ideas spread rapidly, increasing literacy and intellectual awareness.</div></div>
+          <div class="cause-item"><div class="label">Influence of the Crusades</div><div class="text">Increased contact between Europe and the Middle East. Europeans gained advanced knowledge in mathematics, astronomy, medicine, and philosophy.</div></div>
+          <div class="cause-item"><div class="label">Rise of Humanism</div><div class="text">Emphasized study of classical literature. Focused on human achievements, potential, and dignity. Encouraged independent thinking.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Characteristics of the Renaissance</div>
+        <div class="info-card">
+          <ul class="bullet-list">
+            <li><strong>Humanism:</strong> Placed human beings at the center of intellectual life; emphasized education, reason, and individual achievement.</li>
+            <li><strong>Individualism:</strong> People began valuing personal talents and accomplishments; artists sought fame through their work.</li>
+            <li><strong>Secularism:</strong> Attention shifted from purely religious matters to worldly affairs, politics, science, and culture.</li>
+            <li><strong>Scientific Spirit:</strong> Observation, experimentation, and logical reasoning became important.</li>
+            <li><strong>Revival of Classical Learning:</strong> Renewed study of Greek and Roman literature, philosophy, and art.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Major Personalities</div>
+        <div class="leaders-grid">
+          <div class="leader-card"><div class="leader-name">Petrarch</div><div class="leader-role">Father of Humanism</div><div class="leader-desc">Promoted the study of classical texts and encouraged critical thinking.</div></div>
+          <div class="leader-card"><div class="leader-name">Erasmus</div><div class="leader-role">Dutch Scholar</div><div class="leader-desc">Criticized corruption within the Church. Believed reforms should come through education.</div></div>
+          <div class="leader-card"><div class="leader-name">Leonardo da Vinci</div><div class="leader-role">Universal Genius</div><div class="leader-desc">Painter, scientist, engineer, inventor. Famous works: Mona Lisa, The Last Supper.</div></div>
+          <div class="leader-card"><div class="leader-name">Michelangelo</div><div class="leader-role">Sculptor &amp; Painter</div><div class="leader-desc">Famous works: David, Pietà, Sistine Chapel ceiling.</div></div>
+          <div class="leader-card"><div class="leader-name">Raphael</div><div class="leader-role">Painter</div><div class="leader-desc">Known for balanced, harmonious paintings. Masterpiece: The School of Athens.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Effects of the Renaissance</div>
+        <div class="info-card">
+          <ul class="bullet-list">
+            <li><strong>Intellectual:</strong> Growth of scientific inquiry, development of critical thinking, expansion of education.</li>
+            <li><strong>Religious:</strong> Encouraged questioning of Church authority; led to the Reformation movement.</li>
+            <li><strong>Political:</strong> Strengthened the concept of nation-states; reduced feudal influence.</li>
+            <li><strong>Cultural:</strong> Flourishing of literature, art, and architecture; revival of classical learning.</li>
+            <li><strong>Scientific:</strong> Foundation for the Scientific Revolution; encouraged discoveries in astronomy and medicine.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-card teal">
+        <h4>Conclusion</h4>
+        <p class="prose">The Renaissance transformed Europe from a medieval society into a modern civilization. It encouraged creativity, scientific thinking, and intellectual freedom, and became the foundation of modern Western culture.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 2. REFORMATION -->
+    <div class="topic-section" id="u1-reformation">
+      <div class="topic-title"><span class="topic-num">2</span>Reformation &amp; Counter-Reformation</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">The Reformation</div>
+        <div class="prose"><p>The Reformation was a religious movement of the 16th century that aimed to reform the Roman Catholic Church. It resulted in the division of Christianity and the emergence of Protestantism.</p></div>
+
+        <div class="sub-sub-heading">Causes</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Corruption in the Church</div><div class="text">Many Church officials were involved in corruption and luxury. Positions were often sold; moral standards had declined.</div></div>
+          <div class="cause-item"><div class="label">Sale of Indulgences</div><div class="text">Certificates sold by the Church claiming to reduce punishment for sins. Many considered this practice deeply unethical.</div></div>
+          <div class="cause-item"><div class="label">Rise of Humanism</div><div class="text">Humanist scholars encouraged independent thinking and criticism of Church abuses.</div></div>
+          <div class="cause-item"><div class="label">Printing Press</div><div class="text">Enabled reform ideas to spread quickly throughout Europe.</div></div>
+        </div>
+
+        <div class="sub-sub-heading">Martin Luther &amp; The Reformation</div>
+        <div class="info-card highlight">
+          <p class="prose">In <strong>1517</strong>, Martin Luther published his famous <strong>Ninety-Five Theses</strong>, criticizing the sale of indulgences, corruption in the Church, and excessive power of the Pope.</p>
+        </div>
+        <div class="sub-sub-heading">Main Teachings of Luther</div>
+        <ul class="bullet-list">
+          <li><strong>Salvation by Faith:</strong> People could achieve salvation through faith alone, not through Church rituals.</li>
+          <li><strong>Authority of the Bible:</strong> The Bible was the supreme source of religious authority.</li>
+          <li><strong>Priesthood of All Believers:</strong> Every Christian could communicate directly with God.</li>
+        </ul>
+
+        <div class="sub-sub-heading">Effects of the Reformation</div>
+        <ul class="bullet-list">
+          <li><strong>Religious:</strong> Emergence of Protestant churches; permanent division of Christianity.</li>
+          <li><strong>Political:</strong> Reduced Papal authority; strengthened national monarchies.</li>
+          <li><strong>Social:</strong> Increased literacy; encouraged education.</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">The Counter-Reformation</div>
+        <div class="prose"><p>The Counter-Reformation was the Catholic Church's response to the Protestant Reformation. Its purpose was to reform abuses and restore the Church's influence.</p></div>
+
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Council of Trent (1545–1563)</div><div class="text">Introduced reforms: better training for priests, strict discipline among clergy, and clarification of Catholic doctrines.</div></div>
+          <div class="cause-item"><div class="label">Jesuit Order</div><div class="text">Founded by Ignatius of Loyola. Promoted education, spread Christianity worldwide, and defended Catholic beliefs.</div></div>
+        </div>
+
+        <div class="sub-sub-heading">Effects of the Counter-Reformation</div>
+        <ul class="bullet-list">
+          <li>Strengthened Catholicism in remaining countries</li>
+          <li>Improved Church administration and discipline</li>
+          <li>Expanded missionary activities worldwide</li>
+          <li>Increased educational institutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3. FEUDALISM TO CAPITALISM -->
+    <div class="topic-section" id="u1-feudalism">
+      <div class="topic-title"><span class="topic-num">3</span>Economic Changes: Feudalism to Capitalism</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Feudalism</div>
+        <div class="prose"><p>Feudalism was the dominant economic and social system of medieval Europe, organized around land ownership.</p></div>
+        <div class="sub-sub-heading">Social Hierarchy</div>
+        <div class="hierarchy">
+          <div class="level">King</div>
+          <div class="arrow">↓</div>
+          <div class="level">Nobles</div>
+          <div class="arrow">↓</div>
+          <div class="level">Knights</div>
+          <div class="arrow">↓</div>
+          <div class="level">Peasants (Serfs)</div>
+        </div>
+        <div class="sub-sub-heading">Features of Feudalism</div>
+        <ul class="bullet-list">
+          <li>Land was the primary source of wealth</li>
+          <li>Society was organized in strict hierarchy</li>
+          <li>Peasants (serfs) worked the land and owed services to landlords</li>
+          <li>Villages were largely self-sufficient</li>
+        </ul>
+        <div class="sub-sub-heading">Decline of Feudalism</div>
+        <ul class="bullet-list">
+          <li><strong>Growth of Trade:</strong> Trade expanded beyond local markets</li>
+          <li><strong>Rise of Towns:</strong> Urban centers became important economic hubs</li>
+          <li><strong>Black Death:</strong> The plague reduced population, created labor shortages; workers demanded higher wages and freedom</li>
+          <li><strong>Development of Money Economy:</strong> Money gradually replaced land as the basis of wealth</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Capitalism</div>
+        <div class="prose"><p>Capitalism is an economic system based on private ownership, investment, and profit.</p></div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Private Property</div><div class="text">Individuals own land and businesses.</div></div>
+          <div class="cause-item"><div class="label">Profit Motive</div><div class="text">Economic activity aims to generate profit.</div></div>
+          <div class="cause-item"><div class="label">Competition</div><div class="text">Businesses compete for customers.</div></div>
+          <div class="cause-item"><div class="label">Free Market</div><div class="text">Prices are determined by supply and demand.</div></div>
+        </div>
+        <div class="sub-sub-heading">Importance of Capitalism</div>
+        <ul class="bullet-list">
+          <li>Encouraged industrial growth and innovation</li>
+          <li>Expanded international trade</li>
+          <li>Increased investment in new technologies</li>
+          <li>Laid the foundation for the Industrial Revolution</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 4. AMERICAN REVOLUTION -->
+    <div class="topic-section" id="u1-american">
+      <div class="topic-title"><span class="topic-num">4</span>American Revolution (1775–1783)</div>
+      <div class="prose"><p>The American Revolution was the struggle of the thirteen American colonies against British rule, resulting in the creation of the United States of America.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Taxation Without Representation</div><div class="text">Colonists were taxed by Britain without having representatives in Parliament — "No taxation without representation!"</div></div>
+          <div class="cause-item"><div class="label">Stamp Act</div><div class="text">Imposed taxes on printed materials, angering colonists.</div></div>
+          <div class="cause-item"><div class="label">Tea Act</div><div class="text">Favoured the British East India Company over American merchants.</div></div>
+          <div class="cause-item"><div class="label">Boston Tea Party</div><div class="text">Colonists protested by throwing British tea into Boston Harbor.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Major Events</div>
+        <ul class="bullet-list">
+          <li><strong>First Continental Congress:</strong> Colonies united against British policies</li>
+          <li><strong>Battles of Lexington and Concord:</strong> Beginning of armed conflict</li>
+          <li><strong>Declaration of Independence (1776):</strong> Formally declared independence from Britain</li>
+          <li><strong>Treaty of Paris (1783):</strong> Britain recognized American independence</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Consequences</div>
+        <ul class="bullet-list">
+          <li>Birth of the United States of America</li>
+          <li>Spread of democratic ideas worldwide</li>
+          <li>Directly inspired the French Revolution</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 5. FRENCH REVOLUTION -->
+    <div class="topic-section" id="u1-french">
+      <div class="topic-title"><span class="topic-num">5</span>French Revolution — Most Important ⭐</div>
+      <div class="info-card highlight">
+        <h4>Introduction</h4>
+        <p class="prose">The French Revolution began in <strong>1789</strong> and overthrew the Bourbon monarchy. It introduced the principles of <strong>Liberty, Equality, and Fraternity</strong>.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes of the French Revolution</div>
+        <div class="sub-sub-heading">Social Causes — The Three Estates</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">First Estate</div><div class="text">Clergy — enjoyed privileges and paid no taxes.</div></div>
+          <div class="cause-item"><div class="label">Second Estate</div><div class="text">Nobility — powerful, land-owning class with tax exemptions.</div></div>
+          <div class="cause-item"><div class="label">Third Estate</div><div class="text">Common people (97% of population) — paid most of the taxes and had no power.</div></div>
+        </div>
+        <div class="sub-sub-heading">Other Causes</div>
+        <ul class="bullet-list">
+          <li><strong>Economic:</strong> Heavy national debt, high taxation, rising food prices</li>
+          <li><strong>Political:</strong> Weak and indecisive rule of King Louis XVI</li>
+          <li><strong>Intellectual:</strong> Enlightenment philosophers (Voltaire, Rousseau, Montesquieu) spread ideas of liberty and equality</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Major Events</div>
+        <ul class="bullet-list">
+          <li><strong>Estates-General (1789):</strong> Called to solve the financial crisis</li>
+          <li><strong>Tennis Court Oath:</strong> Third Estate formed the National Assembly</li>
+          <li><strong>Storming of the Bastille (14 July 1789):</strong> Symbolic start of the Revolution</li>
+          <li><strong>Declaration of Rights of Man:</strong> Guaranteed liberty and equality</li>
+          <li><strong>Execution of Louis XVI</strong></li>
+          <li><strong>Reign of Terror:</strong> Led by Robespierre — thousands were executed</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Consequences</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Political</div><div class="text">End of absolute monarchy in France.</div></div>
+          <div class="cause-item"><div class="label">Social</div><div class="text">End of feudal privileges; social equality promoted.</div></div>
+          <div class="cause-item"><div class="label">Economic</div><div class="text">Reforms in taxation system.</div></div>
+          <div class="cause-item"><div class="label">International</div><div class="text">Inspired democratic movements worldwide; paved way for Napoleon.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 6. NAPOLEON -->
+    <div class="topic-section" id="u1-napoleon">
+      <div class="topic-title"><span class="topic-num">6</span>Napoleon Bonaparte: Rise &amp; Downfall</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Rise of Napoleon</div>
+        <ul class="bullet-list">
+          <li>After the French Revolution, France experienced political instability</li>
+          <li>Napoleon gained popularity through brilliant military victories</li>
+          <li>In <strong>1799</strong>, he seized power through a coup (became First Consul)</li>
+          <li>In <strong>1804</strong>, declared himself Emperor of France</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Reforms</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Napoleonic Code</div><div class="text">Established equality before law; codified legal system. One of his most lasting achievements.</div></div>
+          <div class="cause-item"><div class="label">Educational Reforms</div><div class="text">Improved and standardized education system across France.</div></div>
+          <div class="cause-item"><div class="label">Administrative Reforms</div><div class="text">Centralized administration; efficient bureaucracy.</div></div>
+          <div class="cause-item"><div class="label">Economic Reforms</div><div class="text">Strengthened financial institutions including the Bank of France.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Downfall</div>
+        <div class="info-card danger">
+          <h4>Reasons for Napoleon's Fall</h4>
+          <ul class="bullet-list">
+            <li><strong>Continental System:</strong> Failed to weaken Britain economically</li>
+            <li><strong>Russian Campaign (1812):</strong> Disastrous invasion — Russian winter and scorched earth policy destroyed his Grand Army</li>
+            <li><strong>Battle of Leipzig (1813):</strong> Major defeat by coalition forces</li>
+            <li><strong>Battle of Waterloo (1815):</strong> Final defeat; exiled to Saint Helena where he died in 1821</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Significance of Napoleon</div>
+        <ul class="bullet-list">
+          <li>Spread nationalism across Europe</li>
+          <li>Introduced lasting legal reforms (Napoleonic Code)</li>
+          <li>Ended many feudal practices</li>
+          <li>Profoundly influenced modern Europe</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- end content-wrapper -->
+
+  <!-- IMPORTANT QUESTIONS UNIT 1 -->
+  <div class="questions-section">
+    <div class="content-wrapper" style="padding-bottom:0">
+      <h3>⭐ Important Exam Questions — Unit I</h3>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.1</span>
+          <span class="q-text">Explain the causes, characteristics, and effects of the Renaissance.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">The Renaissance was a cultural and intellectual movement that began in Italy during the 14th century. The word Renaissance means "rebirth" — revival of classical Greek and Roman learning. It marked the end of the Medieval Age and the beginning of the Modern Age.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Fall of Constantinople (1453) — Greek scholars fled to Italy with manuscripts</li><li>Growth of trade in Italian city-states; Medici family patronage</li><li>Invention of the printing press by Gutenberg (~1450)</li><li>Rise of Humanism — focus on human potential</li><li>Contact through the Crusades with Eastern knowledge</li></ul>
+          <div class="ans-heading">Characteristics</div>
+          <ul><li>Humanism — human beings at center of intellectual life</li><li>Individualism — value of personal achievements</li><li>Secularism — focus on worldly matters</li><li>Scientific spirit — observation and experimentation</li></ul>
+          <div class="ans-heading">Effects</div>
+          <ul><li>Intellectual: scientific inquiry and critical thinking developed</li><li>Cultural: flourishing of art, literature, and architecture</li><li>Religious: led to the Reformation</li><li>Political: rise of nation-states</li><li>Scientific: foundation of the Scientific Revolution</li></ul>
+          <div class="ans-heading">Conclusion</div>
+          <div class="ans-text">The Renaissance transformed Europe intellectually, culturally, and scientifically, marking the beginning of the modern world.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.2</span>
+          <span class="q-text">Explain the causes and effects of the Reformation and Counter-Reformation.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Reformation — Causes</div>
+          <ul><li>Corruption in the Church: clergy lived in luxury, positions sold</li><li>Sale of Indulgences — certificates to reduce punishment for sins</li><li>Rise of Humanism encouraged criticism of Church</li><li>Printing press spread reformist ideas rapidly</li></ul>
+          <div class="ans-heading">Martin Luther's Role</div>
+          <div class="ans-text">In 1517, Luther published Ninety-Five Theses criticizing Church practices. His main teachings: Salvation by Faith alone; Bible as supreme authority; Equality of all believers before God.</div>
+          <div class="ans-heading">Counter-Reformation</div>
+          <ul><li>Council of Trent (1545–63): reformed administration, clarified doctrines</li><li>Jesuit Order (Ignatius of Loyola): spread education and missionary work</li></ul>
+          <div class="ans-heading">Effects</div>
+          <ul><li>Rise of Protestant Churches; permanent division of Christianity</li><li>Reduced Papal authority; strengthened national monarchies</li><li>Increased literacy and education</li></ul>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.3</span>
+          <span class="q-text">Explain the causes, events, and consequences of the French Revolution.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Causes</div>
+          <ul><li>Social: Three Estates system — Third Estate bore all tax burden</li><li>Economic: huge national debt, high food prices, unemployment</li><li>Political: weak rule of King Louis XVI; absolute monarchy</li><li>Intellectual: Enlightenment ideas of Voltaire, Rousseau, Montesquieu</li></ul>
+          <div class="ans-heading">Major Events</div>
+          <ul><li>Estates-General 1789 — called to address financial crisis</li><li>Tennis Court Oath — National Assembly formed</li><li>14 July 1789 — Storming of the Bastille (symbolic start)</li><li>Declaration of Rights of Man — liberty and equality guaranteed</li><li>Execution of King Louis XVI</li><li>Reign of Terror under Robespierre</li></ul>
+          <div class="ans-heading">Consequences</div>
+          <ul><li>End of absolute monarchy in France</li><li>End of feudal privileges</li><li>Liberty, Equality, Fraternity spread as revolutionary ideals</li><li>Inspired democratic movements worldwide</li><li>Rise of Napoleon Bonaparte</li></ul>
+          <div class="memory-trick">Causes = Social (3 Estates) + Economic (debt/prices) + Political (weak king) + Intellectual (Enlightenment). Result = Liberty, Equality, Fraternity.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.4</span>
+          <span class="q-text">Explain the rise, reforms, and downfall of Napoleon Bonaparte.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Rise</div>
+          <div class="ans-text">After the French Revolution, France was politically unstable. Napoleon gained popularity through military victories. In 1799, he seized power through a coup and became First Consul. In 1804, he declared himself Emperor.</div>
+          <div class="ans-heading">Reforms</div>
+          <ul><li>Napoleonic Code — equality before law, codified legal system</li><li>Educational reforms — standardized education</li><li>Administrative centralization</li><li>Economic reforms — Bank of France strengthened</li></ul>
+          <div class="ans-heading">Expansion</div>
+          <div class="ans-text">Napoleon conquered much of Europe, spreading revolutionary ideas and legal reforms across the continent.</div>
+          <div class="ans-heading">Downfall</div>
+          <ul><li>Continental System — failed to weaken Britain</li><li>Disastrous Russian Campaign (1812) — army destroyed by winter</li><li>Battle of Leipzig (1813) — major defeat</li><li>Battle of Waterloo (1815) — final defeat; exiled to Saint Helena</li></ul>
+          <div class="ans-heading">Significance</div>
+          <ul><li>Spread nationalism across Europe</li><li>Napoleonic Code remained influential in many countries</li><li>Ended feudal practices in conquered territories</li></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== UNIT II ==================== -->
+<div class="page" id="page-unit2">
+  <div class="page-header">
+    <div class="unit-label">Unit II · 19th Century</div>
+    <h2>Industrial Revolution, Nationalism, German &amp; Italian Unification, Japan</h2>
+  </div>
+  <div class="content-wrapper">
+
+    <div class="toc">
+      <h3>Topics in this Unit</h3>
+      <ol>
+        <li><a href="#u2-industrial">Industrial Revolution</a></li>
+        <li><a href="#u2-revolutions">Revolutions of 1830 and 1848</a></li>
+        <li><a href="#u2-nationalism">Rise of Nationalism</a></li>
+        <li><a href="#u2-germany">Unification of Germany (Bismarck)</a></li>
+        <li><a href="#u2-italy">Unification of Italy</a></li>
+        <li><a href="#u2-conservatism">Age of Conservatism</a></li>
+        <li><a href="#u2-japan">Modernisation of Japan (Meiji Restoration)</a></li>
+      </ol>
+    </div>
+
+    <!-- INDUSTRIAL REVOLUTION -->
+    <div class="topic-section" id="u2-industrial">
+      <div class="topic-title"><span class="topic-num">1</span>Industrial Revolution</div>
+      <div class="info-card highlight">
+        <h4>Definition</h4>
+        <p class="prose">The Industrial Revolution was a period during which production shifted from hand-made goods to machine-made goods. It began in Britain around <strong>1760</strong> and later spread to Europe, America, and the rest of the world. It transformed economic, social, political, and technological life.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Why Did It Begin in Britain?</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Agricultural Revolution</div><div class="text">New farming techniques increased food production. More workers became available for factories.</div></div>
+          <div class="cause-item"><div class="label">Natural Resources</div><div class="text">Britain had abundant coal and iron ore — coal for energy, iron for machines and railways.</div></div>
+          <div class="cause-item"><div class="label">Colonial Empire</div><div class="text">Colonies provided raw materials (cotton, sugar) AND markets for finished goods.</div></div>
+          <div class="cause-item"><div class="label">Capital &amp; Banking</div><div class="text">British merchants accumulated huge wealth from trade. Banks provided loans for industrial development.</div></div>
+          <div class="cause-item"><div class="label">Political Stability</div><div class="text">Relative stability created a favorable environment for long-term investment.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Important Inventions</div>
+        <div class="leaders-grid">
+          <div class="leader-card"><div class="leader-name">Flying Shuttle</div><div class="leader-role">John Kay</div><div class="leader-desc">Increased the speed of weaving in textile production.</div></div>
+          <div class="leader-card"><div class="leader-name">Spinning Jenny</div><div class="leader-role">James Hargreaves</div><div class="leader-desc">Allowed one worker to spin multiple threads simultaneously.</div></div>
+          <div class="leader-card"><div class="leader-name">Water Frame</div><div class="leader-role">Richard Arkwright</div><div class="leader-desc">Used water power for spinning cotton.</div></div>
+          <div class="leader-card"><div class="leader-name">Power Loom</div><div class="leader-role">Edmund Cartwright</div><div class="leader-desc">Mechanized the weaving process.</div></div>
+          <div class="leader-card"><div class="leader-name">Steam Engine ⭐</div><div class="leader-role">James Watt</div><div class="leader-desc">Most important invention. Powered factories, railways, and steamships.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Effects of the Industrial Revolution</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Economic Effects</div><div class="text">Increased production, reduced costs, expansion of international trade, growth of capitalism.</div></div>
+          <div class="cause-item"><div class="label">Social Effects</div><div class="text">Urbanization (people moved to cities), rise of working class, child labour, poor living conditions.</div></div>
+          <div class="cause-item"><div class="label">Technological Effects</div><div class="text">Rapid technological progress; railways and steamships improved transportation.</div></div>
+          <div class="cause-item"><div class="label">Political Effects</div><div class="text">Industrial nations became more powerful; encouraged labour movements and trade unions.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- REVOLUTIONS 1830 & 1848 -->
+    <div class="topic-section" id="u2-revolutions">
+      <div class="topic-title"><span class="topic-num">2</span>Revolutions of 1830 and 1848</div>
+      <div class="prose"><p>After Napoleon's defeat in 1815, European rulers wanted to restore the old political order (Age of Conservatism). However, many people demanded democracy, nationalism, and constitutional government. These demands led to revolutions.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Revolution of 1830</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">France — July Revolution</div><div class="text">King Charles X tried to strengthen royal authority. People revolted. Charles X overthrown; Louis Philippe became constitutional king.</div></div>
+          <div class="cause-item"><div class="label">Belgium</div><div class="text">Belgium successfully separated from the Netherlands and became an independent nation.</div></div>
+        </div>
+        <ul class="bullet-list">
+          <li>Strengthened liberal ideas across Europe</li>
+          <li>Encouraged nationalist movements</li>
+          <li>Inspired future revolutions</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Revolution of 1848 — "Springtime of Nations"</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Economic Problems</div><div class="text">Crop failures and widespread unemployment.</div></div>
+          <div class="cause-item"><div class="label">Political Oppression</div><div class="text">People demanded constitutional reforms and rights.</div></div>
+          <div class="cause-item"><div class="label">Nationalism</div><div class="text">Different national groups sought independence and unity.</div></div>
+        </div>
+        <div class="sub-sub-heading">Major Areas Affected</div>
+        <ul class="bullet-list">
+          <li><strong>France:</strong> Louis Philippe overthrown; Second Republic established</li>
+          <li><strong>Germany:</strong> People demanded national unity</li>
+          <li><strong>Austria:</strong> Nationalist movements challenged the Empire</li>
+          <li><strong>Italy:</strong> People sought unification</li>
+        </ul>
+        <div class="sub-sub-heading">Long-term Results</div>
+        <ul class="bullet-list">
+          <li>Although most revolutions failed immediately, they planted seeds for future change</li>
+          <li>Democracy and nationalism eventually triumphed later in the century</li>
+          <li>Absolute monarchies were weakened in the long run</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- NATIONALISM -->
+    <div class="topic-section" id="u2-nationalism">
+      <div class="topic-title"><span class="topic-num">3</span>Rise of Nationalism in Europe</div>
+      <div class="info-card highlight">
+        <h4>Definition</h4>
+        <p class="prose">Nationalism is the belief that people who share a common language, culture, history, and traditions should unite and form an independent nation. It became one of the most powerful political forces of the 19th century.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes of Nationalism</div>
+        <ul class="bullet-list">
+          <li><strong>French Revolution:</strong> Spread ideas of liberty, equality, and popular sovereignty</li>
+          <li><strong>Napoleon's conquests:</strong> Spread revolutionary principles; many people developed stronger national identity (even against Napoleon)</li>
+          <li><strong>Industrial Revolution:</strong> Improved transportation and communication increased interaction among people</li>
+          <li><strong>Cultural Revival:</strong> Writers, poets, and historians promoted national languages and traditions</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Effects of Nationalism</div>
+        <ul class="bullet-list">
+          <li>Unification of Germany (1871) under Bismarck</li>
+          <li>Unification of Italy (1871) under Mazzini, Cavour, Garibaldi</li>
+          <li>Decline of multinational empires (Austrian, Ottoman)</li>
+          <li>Shaped modern Europe and influenced political developments worldwide</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GERMANY -->
+    <div class="topic-section" id="u2-germany">
+      <div class="topic-title"><span class="topic-num">4</span>Unification of Germany ⭐ Exam Favourite</div>
+      <div class="prose"><p>Before unification, Germany consisted of about 39 independent states. The strongest state was Prussia. The unification process was led by Prussia under <strong>Otto von Bismarck</strong>.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Otto von Bismarck</div>
+        <div class="info-card highlight">
+          <h4>Blood and Iron Policy</h4>
+          <p class="prose">Bismarck became Prime Minister of Prussia in <strong>1862</strong>. He believed Germany would be united through military strength and practical diplomacy — not through speeches and debates. His famous policy: <strong>"Blood and Iron"</strong></p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Three Stages of German Unification</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">1. Danish War (1864)</div><div class="text">Prussia and Austria jointly defeated Denmark. Increased Prussia's influence and territory.</div></div>
+          <div class="cause-item"><div class="label">2. Austro-Prussian War (1866)</div><div class="text">Prussia defeated Austria. Austria was excluded from German affairs. Prussia became the dominant German power.</div></div>
+          <div class="cause-item"><div class="label">3. Franco-Prussian War (1870–71)</div><div class="text">Prussia defeated France. German states united against a common enemy. Nationalist feelings became very strong.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Final Unification</div>
+        <div class="info-card teal">
+          <h4>January 1871</h4>
+          <p class="prose">Germany was officially unified. King Wilhelm I was proclaimed German Emperor. The German Empire was established, becoming one of the strongest nations in Europe.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ITALY -->
+    <div class="topic-section" id="u2-italy">
+      <div class="topic-title"><span class="topic-num">5</span>Unification of Italy ⭐ Exam Favourite</div>
+      <div class="prose"><p>Before unification, Italy was divided into many states, many under foreign control (especially Austria). Italian nationalists wanted political unity.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">The Three Leaders</div>
+        <div class="leaders-grid">
+          <div class="leader-card"><div class="leader-name">Giuseppe Mazzini</div><div class="leader-role">Father of Italian Nationalism</div><div class="leader-desc">Founded "Young Italy." Promoted the idea of a united Italian republic. The ideological inspiration.</div></div>
+          <div class="leader-card"><div class="leader-name">Count Cavour</div><div class="leader-role">The Diplomat</div><div class="leader-desc">Prime Minister of Piedmont-Sardinia. Used diplomacy and alliances (with France) to promote unification. The political brain.</div></div>
+          <div class="leader-card"><div class="leader-name">Giuseppe Garibaldi</div><div class="leader-role">The Soldier</div><div class="leader-desc">Revolutionary military leader. Led the Red Shirts. Conquered Sicily and southern Italy. The military force.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Process of Unification</div>
+        <ul class="bullet-list">
+          <li>Cavour formed alliance with France; Austria defeated; northern territories acquired</li>
+          <li>Garibaldi captured Sicily and southern Italy with his Red Shirts</li>
+          <li>Garibaldi handed conquered territories to King Victor Emmanuel II</li>
+          <li><strong>1870:</strong> Rome incorporated into Italy</li>
+          <li><strong>1871:</strong> Italy became a fully unified nation with Rome as capital</li>
+        </ul>
+      </div>
+
+      <div class="memory-trick" style="background:#e6f3ff;border-color:#185FA5;color:#0C447C;margin-top:16px">Mazzini = Ideology | Cavour = Diplomacy | Garibaldi = Military. Together they unified Italy.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CONSERVATISM -->
+    <div class="topic-section" id="u2-conservatism">
+      <div class="topic-title"><span class="topic-num">6</span>Age of Conservatism</div>
+      <div class="prose"><p>After Napoleon's defeat, European rulers attempted to restore traditional monarchy and political order.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Congress of Vienna (1815)</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Restore Monarchies</div><div class="text">Return old rulers to power across Europe.</div></div>
+          <div class="cause-item"><div class="label">Balance of Power</div><div class="text">Prevent any single country from dominating Europe.</div></div>
+          <div class="cause-item"><div class="label">Suppress Revolutions</div><div class="text">Stop nationalist and liberal movements.</div></div>
+        </div>
+        <div class="sub-sub-heading">Key Features</div>
+        <ul class="bullet-list">
+          <li>Support for monarchy and opposition to democracy</li>
+          <li>Opposition to nationalism</li>
+          <li>Preservation of traditional institutions</li>
+          <li>Metternich of Austria as the main force behind conservatism</li>
+        </ul>
+        <div class="info-card danger">
+          <h4>Weakness</h4>
+          <p class="prose">Conservative rulers could not permanently suppress nationalism and liberalism. Eventually the revolutions of 1830 and 1848 challenged their authority.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- JAPAN -->
+    <div class="topic-section" id="u2-japan">
+      <div class="topic-title"><span class="topic-num">7</span>Modernisation of Japan (Meiji Restoration) ⭐ Very Important</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Japan Before Modernisation</div>
+        <ul class="bullet-list">
+          <li>Japan followed a policy of strict isolation from the world</li>
+          <li>Ruled by the Tokugawa Shogunate — feudal system</li>
+          <li>Foreign influence was extremely limited</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Opening of Japan</div>
+        <div class="info-card highlight">
+          <h4>Commodore Perry (1853)</h4>
+          <p class="prose">Commodore Matthew Perry of the United States arrived with warships. Japan was forced to open its ports for trade. This exposed Japan's technological backwardness compared to Western powers.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Meiji Restoration (1868)</div>
+        <div class="prose"><p>Emperor Meiji regained power. This marked the beginning of rapid, deliberate modernisation. Japan adopted Western ideas while maintaining its own culture.</p></div>
+
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Political Reforms</div><div class="text">Centralized government established. Feudal system abolished. Modern bureaucracy created.</div></div>
+          <div class="cause-item"><div class="label">Military Reforms</div><div class="text">Modern army (Prussian model) and navy (British model). Compulsory military service introduced.</div></div>
+          <div class="cause-item"><div class="label">Educational Reforms</div><div class="text">Universal education promoted. Western science and technology adopted in schools.</div></div>
+          <div class="cause-item"><div class="label">Industrial Reforms</div><div class="text">Factories established. Railways and telegraphs constructed. Modern industries developed.</div></div>
+          <div class="cause-item"><div class="label">Economic Reforms</div><div class="text">Modern banking system established. National economy strengthened.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Results of Modernisation</div>
+        <div class="info-card teal">
+          <h4>Japan's Transformation</h4>
+          <ul class="bullet-list">
+            <li>Became an industrialised, modern nation</li>
+            <li>Defeated China (1894–95) — first Asian victory over a major power</li>
+            <li>Defeated Russia (1904–05) — first Asian victory over a European power</li>
+            <li>Became the first modern industrial nation in Asia and a world power</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end content-wrapper -->
+
+  <div class="questions-section">
+    <div class="content-wrapper" style="padding-bottom:0">
+      <h3>⭐ Important Exam Questions — Unit II</h3>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.1</span>
+          <span class="q-text">Explain the causes, process, and effects of the Industrial Revolution.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">The Industrial Revolution was a major economic and technological transformation that began in Britain in the late 18th century. It changed production from manual labor to machine-based manufacturing and marked the beginning of the modern industrial age.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Agricultural Revolution — surplus labour and food</li><li>Coal and iron ore — essential resources</li><li>Colonial empire — raw materials and markets</li><li>Capital accumulation — merchants invested in factories</li><li>Political stability — encouraged long-term investment</li></ul>
+          <div class="ans-heading">Key Inventions</div>
+          <ul><li>Flying Shuttle (Kay), Spinning Jenny (Hargreaves), Water Frame (Arkwright), Power Loom (Cartwright)</li><li>Steam Engine (James Watt) — the most important invention</li></ul>
+          <div class="ans-heading">Effects</div>
+          <ul><li>Economic: mass production, capitalism, international trade</li><li>Social: urbanization, working class, child labour</li><li>Technological: railways, steamships, telegraph</li><li>Political: labour movements, trade unions</li></ul>
+          <div class="memory-trick">Agricultural Revolution → Industrial Revolution → Urban Revolution. Coal + Iron + Steam = Industrial Britain.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.2</span>
+          <span class="q-text">Explain the role of Otto von Bismarck in the Unification of Germany.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Background</div>
+          <div class="ans-text">Before unification, Germany had 39 separate states. Prussia was the strongest. Bismarck became Prime Minister of Prussia in 1862.</div>
+          <div class="ans-heading">Bismarck's Policy</div>
+          <div class="ans-text">"Blood and Iron" — unity through military strength and practical diplomacy, not speeches and debates.</div>
+          <div class="ans-heading">Three Wars</div>
+          <ul><li>Danish War (1864) — Prussia + Austria defeated Denmark</li><li>Austro-Prussian War (1866) — Prussia defeated Austria; Austria excluded from German affairs</li><li>Franco-Prussian War (1870–71) — Prussia defeated France; German states united</li></ul>
+          <div class="ans-heading">Result</div>
+          <div class="ans-text">January 1871 — Germany officially unified. Wilhelm I became Emperor. Germany became Europe's strongest military power.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.3</span>
+          <span class="q-text">Explain the Unification of Italy with reference to Mazzini, Cavour, and Garibaldi.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Mazzini — The Thinker</div>
+          <div class="ans-text">Father of Italian Nationalism. Founded Young Italy. Inspired people with the vision of a united, independent Italian republic.</div>
+          <div class="ans-heading">Cavour — The Diplomat</div>
+          <div class="ans-text">Prime Minister of Piedmont-Sardinia. Formed alliance with France; secured French support against Austria. Acquired northern territories diplomatically.</div>
+          <div class="ans-heading">Garibaldi — The Soldier</div>
+          <div class="ans-text">Revolutionary military leader. Led the Red Shirts. Conquered Sicily and southern Italy. Handed territories to King Victor Emmanuel II.</div>
+          <div class="ans-heading">Final Stage</div>
+          <div class="ans-text">Rome incorporated 1870. Italy fully unified 1871. Rome became capital.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.4</span>
+          <span class="q-text">Explain the causes and consequences of the Meiji Restoration in Japan.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Causes</div>
+          <ul><li>Japan's isolation policy made it technologically backward</li><li>1853 — Commodore Perry's warships forced Japan to open ports</li><li>Japan's weakness exposed; internal dissatisfaction grew</li><li>Many leaders believed modernization was necessary for survival</li></ul>
+          <div class="ans-heading">Meiji Reforms (1868)</div>
+          <ul><li>Political: centralized government, feudalism abolished</li><li>Military: modern army and navy, compulsory service</li><li>Educational: universal education, Western science adopted</li><li>Industrial: factories, railways, modern industries</li><li>Economic: modern banking system</li></ul>
+          <div class="ans-heading">Consequences</div>
+          <ul><li>Japan became industrialized very rapidly</li><li>Defeated China (1894–95) and Russia (1904–05)</li><li>Became first modern industrial power in Asia and a world power</li></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== UNIT III ==================== -->
+<div class="page" id="page-unit3">
+  <div class="page-header">
+    <div class="unit-label">Unit III · Late 19th – Early 20th Century</div>
+    <h2>Imperialism, Chinese Revolution 1911, Russian Revolution, Depression &amp; Fascism</h2>
+  </div>
+  <div class="content-wrapper">
+
+    <div class="toc">
+      <h3>Topics in this Unit</h3>
+      <ol>
+        <li><a href="#u3-imperialism">Imperialism and Colonialism</a></li>
+        <li><a href="#u3-china1911">Chinese Revolution of 1911 — Sun Yat-sen</a></li>
+        <li><a href="#u3-russian">Russian Revolution of 1917 (Most Important)</a></li>
+        <li><a href="#u3-depression">Great Economic Depression and Recovery</a></li>
+        <li><a href="#u3-fascism">Fascism in Italy and Nazism in Germany</a></li>
+      </ol>
+    </div>
+
+    <!-- IMPERIALISM -->
+    <div class="topic-section" id="u3-imperialism">
+      <div class="topic-title"><span class="topic-num">1</span>Imperialism and Colonialism</div>
+
+      <div class="info-card highlight">
+        <h4>Definitions</h4>
+        <p class="prose"><strong>Imperialism</strong> = the policy by which a powerful country extends its control over weaker countries for political, economic, or military purposes.<br><br><strong>Colonialism</strong> = the practical implementation of imperialism — actual occupation and administration of foreign territories.<br><br>Key distinction: Imperialism is the <em>idea/policy</em>; Colonialism is the <em>actual rule</em>.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Why Did Imperialism Develop?</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Economic Reasons</div><div class="text">After the Industrial Revolution, factories needed raw materials — cotton, rubber, coal, oil. Colonies became cheap sources of resources.</div></div>
+          <div class="cause-item"><div class="label">Need for Markets</div><div class="text">Factories produced more than domestic populations could consume. Colonies became captive markets for finished goods.</div></div>
+          <div class="cause-item"><div class="label">Political Reasons</div><div class="text">European nations competed with each other. More colonies = greater prestige, power, and international status.</div></div>
+          <div class="cause-item"><div class="label">Military Reasons</div><div class="text">Colonies provided naval bases, strategic ports, and military advantages for protecting trade routes.</div></div>
+          <div class="cause-item"><div class="label">Religious/Cultural</div><div class="text">"White Man's Burden" — Europeans claimed to be civilising other societies, though economic interests were the real motivation.</div></div>
+        </div>
+        <div class="memory-trick">Formula: Industrial Revolution → Need for Raw Materials → Colonies → Resources + Markets + Prestige</div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Effects of Imperialism</div>
+        <div class="effects-split">
+          <div class="effect-col pos">
+            <h4>Positive Effects</h4>
+            <ul class="bullet-list">
+              <li>Railways, roads, and ports constructed</li>
+              <li>Telegraph and postal systems introduced</li>
+              <li>Modern schools and universities established</li>
+              <li>Modern systems of governance introduced</li>
+            </ul>
+          </div>
+          <div class="effect-col neg">
+            <h4>Negative Effects</h4>
+            <ul class="bullet-list">
+              <li>Economic exploitation — resources extracted for imperial benefit</li>
+              <li>Destruction of local industries</li>
+              <li>Cultural suppression — local languages and traditions discouraged</li>
+              <li>Political dependence — colonized people lost self-governance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CHINA 1911 -->
+    <div class="topic-section" id="u3-china1911">
+      <div class="topic-title"><span class="topic-num">2</span>Chinese Revolution of 1911 — Sun Yat-sen</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Background — Problems Facing China</div>
+        <ul class="bullet-list">
+          <li>The Qing Dynasty had become weak and ineffective by the 19th century</li>
+          <li><strong>Foreign intervention:</strong> Western powers and Japan forced China to grant special privileges and trade rights</li>
+          <li><strong>Economic problems:</strong> Poverty, high taxes, population pressure</li>
+          <li><strong>Political weakness:</strong> Qing government failed to modernize; people lost confidence</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Sun Yat-sen — Father of Modern China</div>
+        <div class="info-card highlight">
+          <h4>Three Principles of the People</h4>
+          <ul class="bullet-list">
+            <li><strong>Nationalism:</strong> China should be free from foreign domination; overthrow Qing Dynasty</li>
+            <li><strong>Democracy:</strong> Government should represent the people</li>
+            <li><strong>People's Livelihood:</strong> Economic conditions should improve for ordinary citizens</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Revolution of 1911</div>
+        <ul class="bullet-list">
+          <li>Revolution began with the <strong>Wuchang Uprising</strong></li>
+          <li>Revolutionary forces gained support across China rapidly</li>
+          <li>The Qing Dynasty collapsed — over 2,000 years of imperial rule ended</li>
+          <li>China became a republic; Sun Yat-sen became the provisional president</li>
+        </ul>
+      </div>
+
+      <div class="info-card teal">
+        <h4>Significance</h4>
+        <p class="prose">The revolution ended over two thousand years of imperial rule in China. It marked the beginning of modern Chinese political development and eventually led to the Communist Revolution of 1949.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RUSSIAN REVOLUTION -->
+    <div class="topic-section" id="u3-russian">
+      <div class="topic-title"><span class="topic-num">3</span>Russian Revolution of 1917 ⭐ Most Important</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Russia Before the Revolution</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Tsar Nicholas II</div><div class="text">Absolute ruler with no real democracy. Any criticism suppressed. People had little political freedom.</div></div>
+          <div class="cause-item"><div class="label">Social Inequality</div><div class="text">Aristocracy owned vast wealth; peasants and workers lived in poverty. Factory workers: 12-16 hour days, low wages, dangerous conditions.</div></div>
+          <div class="cause-item"><div class="label">Economic Problems</div><div class="text">Weak economy, low agricultural production, inflation increased cost of living.</div></div>
+          <div class="cause-item"><div class="label">World War I (Immediate Cause)</div><div class="text">Russia suffered massive military losses, food shortages, and economic collapse. Government appeared completely incapable.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">February Revolution (1917)</div>
+        <ul class="bullet-list">
+          <li>Workers and soldiers protested in Petrograd — protests spread rapidly</li>
+          <li>Army refused to suppress the demonstrations; many soldiers joined the protesters</li>
+          <li><strong>Tsar Nicholas II abdicated</strong> — Romanov dynasty ended after 300+ years</li>
+          <li>A Provisional Government was formed but made a crucial mistake: <em>continued Russia's involvement in WWI</em></li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Lenin and the Bolsheviks</div>
+        <div class="info-card highlight">
+          <h4>Lenin's Famous Promise: "Peace, Land, and Bread"</h4>
+          <ul class="bullet-list">
+            <li><strong>Peace:</strong> End participation in World War I immediately</li>
+            <li><strong>Land:</strong> Redistribute land to peasants</li>
+            <li><strong>Bread:</strong> Solve food shortages</li>
+          </ul>
+          <p class="prose" style="margin-top:10px">These promises gained massive popular support across Russia.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">October Revolution (November 1917)</div>
+        <ul class="bullet-list">
+          <li>Bolsheviks seized power; government buildings occupied</li>
+          <li>Provisional Government was overthrown</li>
+          <li>Lenin became the leader of Russia</li>
+          <li>Russia became the world's first communist state</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Consequences</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Political</div><div class="text">Monarchy ended permanently. Russia became a communist state.</div></div>
+          <div class="cause-item"><div class="label">Economic</div><div class="text">Major industries nationalized; government controlled economic resources.</div></div>
+          <div class="cause-item"><div class="label">Social</div><div class="text">Land redistributed to peasants. Traditional aristocratic privileges disappeared.</div></div>
+          <div class="cause-item"><div class="label">International</div><div class="text">USSR formed 1922. Communist ideas spread worldwide. Capitalist nations feared revolution. Shaped global politics for decades.</div></div>
+        </div>
+      </div>
+
+      <div class="memory-trick">Tsar + Poverty + World War I = Revolution. Then: Lenin + Peace, Land, Bread = Communist Russia.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GREAT DEPRESSION -->
+    <div class="topic-section" id="u3-depression">
+      <div class="topic-title"><span class="topic-num">4</span>Great Economic Depression and Recovery</div>
+
+      <div class="prose"><p>The Great Depression was the worst economic crisis in modern history. It began in the United States in <strong>1929</strong> and spread across the world. Millions lost jobs, businesses failed, and economies collapsed.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Stock Market Speculation</div><div class="text">People bought shares expecting endless price rises. Many borrowed money to invest. A speculative bubble formed.</div></div>
+          <div class="cause-item"><div class="label">Overproduction</div><div class="text">Factories produced more goods than consumers could buy. Products piled up; profits declined.</div></div>
+          <div class="cause-item"><div class="label">Banking Weakness</div><div class="text">Banks heavily invested in stocks. When prices collapsed, banks lost huge amounts and many failed.</div></div>
+          <div class="cause-item"><div class="label">Unequal Distribution</div><div class="text">Wealth concentrated among a small group; ordinary consumers lacked purchasing power.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Wall Street Crash (October 1929)</div>
+        <div class="info-card danger">
+          <h4>The Crash</h4>
+          <p class="prose">Investors panicked and sold millions of shares. Stock prices collapsed. This became known as the <strong>Wall Street Crash</strong> — triggering a global chain reaction.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Effects</div>
+        <ul class="bullet-list">
+          <li><strong>Unemployment:</strong> Millions lost jobs; factories closed; businesses went bankrupt</li>
+          <li><strong>Poverty:</strong> Families lost homes and savings; living standards collapsed</li>
+          <li><strong>Global Crisis:</strong> Spread worldwide; international trade collapsed</li>
+          <li><strong>Political:</strong> Economic hardship increased support for extremist leaders — helped Adolf Hitler gain power in Germany</li>
+        </ul>
+      </div>
+
+      <div class="memory-trick">Overproduction + Speculation + Bank Failures = Great Depression. Great Depression = Unemployment + Poverty + Rise of Hitler.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FASCISM & NAZISM -->
+    <div class="topic-section" id="u3-fascism">
+      <div class="topic-title"><span class="topic-num">5</span>Fascism in Italy &amp; Nazism in Germany ⭐ Very Important</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Fascism in Italy</div>
+        <div class="info-card highlight">
+          <h4>Remember: Mussolini = Fascism</h4>
+          <p class="prose">Post-WWI Italy faced economic crisis, strikes, and fear of communism. Mussolini formed the Blackshirts. In <strong>1922</strong>, through the "March on Rome," the King appointed him Prime Minister.</p>
+        </div>
+        <div class="sub-sub-heading">Features of Fascism</div>
+        <ul class="bullet-list">
+          <li>Ultra-nationalism and strong national pride</li>
+          <li>One-party state under Mussolini's dictatorship</li>
+          <li>State power above individual rights</li>
+          <li>Anti-communism</li>
+          <li>Military expansion (invaded Ethiopia 1935)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Nazism in Germany</div>
+        <div class="info-card highlight">
+          <h4>Remember: Hitler = Nazism</h4>
+          <p class="prose">Hitler exploited Germany's humiliation after the Treaty of Versailles and economic suffering from the Depression. In <strong>1933</strong>, he became Chancellor, then Führer in 1934.</p>
+        </div>
+
+        <div class="sub-sub-heading">Why Did Hitler Rise?</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Treaty of Versailles</div><div class="text">Germany blamed for WWI, forced to pay huge reparations. Many Germans felt humiliated.</div></div>
+          <div class="cause-item"><div class="label">Economic Problems</div><div class="text">Inflation and unemployment made people desperate. Hitler promised solutions.</div></div>
+          <div class="cause-item"><div class="label">Great Depression</div><div class="text">Depression worsened economic conditions. Millions unemployed and angry.</div></div>
+        </div>
+
+        <div class="sub-sub-heading">Main Features of Nazism</div>
+        <ul class="bullet-list">
+          <li><strong>Dictatorship:</strong> Hitler controlled all political power; opposition banned</li>
+          <li><strong>Extreme Nationalism:</strong> Germany considered superior</li>
+          <li><strong>Aryan Supremacy:</strong> Belief in racial superiority of the Aryan race</li>
+          <li><strong>Anti-Semitism:</strong> Jews blamed for Germany's problems; faced persecution</li>
+          <li><strong>Militarism:</strong> Military expansion and rearmament</li>
+        </ul>
+
+        <div class="sub-sub-heading">Consequences of Nazism</div>
+        <ul class="bullet-list">
+          <li>End of democracy — Germany became a totalitarian dictatorship</li>
+          <li><strong>Holocaust:</strong> Millions of Jews murdered in concentration camps</li>
+          <li>World War II — Hitler's aggressive policies directly caused the war</li>
+        </ul>
+      </div>
+
+      <div class="info-card teal">
+        <h4>Key Difference: Fascism vs Nazism</h4>
+        <p class="prose">Both are dictatorships with nationalism and anti-communism. <strong>Nazism added racial superiority and extreme antisemitism</strong> as core ideology. Fascism mainly focused on nationalism, dictatorship, and state power — without the same racial emphasis initially.</p>
+      </div>
+      <div class="memory-trick">Versailles + Depression + Hitler = Nazism. Nazism = Dictatorship + Aryan Supremacy + Holocaust + WWII.</div>
+    </div>
+
+  </div><!-- end content-wrapper -->
+
+  <div class="questions-section">
+    <div class="content-wrapper" style="padding-bottom:0">
+      <h3>⭐ Important Exam Questions — Unit III</h3>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.1</span>
+          <span class="q-text">Explain the causes, events, and consequences of the Russian Revolution of 1917.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">The Russian Revolution of 1917 was one of the most important events in modern history. It ended Tsarist rule, destroyed the old monarchy, and established the world's first communist government under Vladimir Lenin.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Autocratic rule of Tsar Nicholas II — no democracy, no political freedom</li><li>Social inequality — aristocracy vs. poverty-stricken peasants and workers</li><li>Economic problems — weak economy, inflation, hunger</li><li>WWI (immediate cause) — military defeats, food shortages, economic collapse</li></ul>
+          <div class="ans-heading">February Revolution</div>
+          <ul><li>Workers protested in Petrograd; army refused to fire on protesters</li><li>Tsar Nicholas II abdicated — Romanov dynasty ended</li><li>Provisional Government formed but continued WWI — big mistake</li></ul>
+          <div class="ans-heading">October Revolution</div>
+          <ul><li>Lenin and Bolsheviks promised "Peace, Land, and Bread"</li><li>Bolsheviks seized power in October 1917</li><li>Provisional Government overthrown; Lenin became leader</li></ul>
+          <div class="ans-heading">Consequences</div>
+          <ul><li>End of monarchy; Russia became communist state</li><li>Industries nationalized; land redistributed to peasants</li><li>USSR formed in 1922</li><li>Communist ideas spread worldwide; shaped 20th century global politics</li></ul>
+          <div class="memory-trick">Tsar + Poverty + WWI = February Revolution. Lenin + Peace/Land/Bread = October Revolution = Communist Russia.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.2</span>
+          <span class="q-text">Explain the causes and effects of the Great Depression.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">The Great Depression was the worst economic crisis in modern history, beginning with the Wall Street Crash in October 1929 and spreading worldwide.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Stock Market Speculation — people borrowed to invest, creating a speculative bubble</li><li>Overproduction — factories produced more than consumers could buy</li><li>Banking weakness — banks heavily invested in stocks; collapsed when prices fell</li><li>Unequal income distribution — ordinary people lacked purchasing power</li></ul>
+          <div class="ans-heading">Effects</div>
+          <ul><li>Massive unemployment worldwide; factories closed</li><li>Extreme poverty; families lost homes and savings</li><li>International trade collapsed</li><li>Political consequence: economic despair helped Adolf Hitler rise in Germany</li></ul>
+          <div class="ans-heading">Conclusion</div>
+          <div class="ans-text">The Great Depression demonstrated the dangers of unregulated capitalism and significantly influenced global politics by creating conditions for fascism and World War II.</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.3</span>
+          <span class="q-text">Explain Nazism in Germany — its rise, features, and consequences.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">Nazism was the political ideology of Adolf Hitler and the Nazi Party, emphasizing dictatorship, extreme nationalism, racism, and militarism. It transformed Germany into a totalitarian state.</div>
+          <div class="ans-heading">Why Did Hitler Rise?</div>
+          <ul><li>Treaty of Versailles — Germany humiliated, huge reparations</li><li>Economic problems — inflation and unemployment</li><li>Great Depression — millions unemployed; Hitler promised solutions</li></ul>
+          <div class="ans-heading">Main Features</div>
+          <ul><li>Dictatorship — Hitler controlled all power; opposition banned</li><li>Extreme nationalism — Germany considered superior</li><li>Aryan supremacy — racial superiority ideology</li><li>Anti-Semitism — Jews blamed and persecuted</li><li>Militarism — aggressive military expansion</li></ul>
+          <div class="ans-heading">Consequences</div>
+          <ul><li>End of democracy in Germany</li><li>Holocaust — systematic murder of 6 million Jews</li><li>World War II — Hitler's aggression directly caused the war</li></ul>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.4</span>
+          <span class="q-text">Explain Imperialism and Colonialism — causes and effects.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Definitions</div>
+          <div class="ans-text">Imperialism = policy of extending control over weaker countries. Colonialism = actual occupation and administration of those territories.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Economic: need for raw materials and new markets after Industrial Revolution</li><li>Political: competition for prestige and power among European nations</li><li>Military: colonies provided strategic naval bases</li><li>Cultural: "White Man's Burden" — claimed mission to civilise</li></ul>
+          <div class="ans-heading">Effects</div>
+          <ul><li>Positive: railways, hospitals, schools, modern governance introduced</li><li>Negative: economic exploitation, destruction of local industries, cultural suppression, political dependence</li><li>Long-term: inequalities created that continue to affect countries today</li></ul>
+          <div class="memory-trick">Industrial Revolution → Need for Raw Materials → Colonies → Resources + Markets + Prestige</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== UNIT IV ==================== -->
+<div class="page" id="page-unit4">
+  <div class="page-header">
+    <div class="unit-label">Unit IV · Mid–Late 20th Century</div>
+    <h2>World War II, UNO, Chinese Revolution 1949, Civil Rights &amp; Cold War</h2>
+  </div>
+  <div class="content-wrapper">
+
+    <div class="toc">
+      <h3>Topics in this Unit</h3>
+      <ol>
+        <li><a href="#u4-wwii">Second World War (1939–1945)</a></li>
+        <li><a href="#u4-uno">United Nations Organisation (UNO)</a></li>
+        <li><a href="#u4-china1949">Chinese Revolution of 1949</a></li>
+        <li><a href="#u4-civilrights">Civil Rights Movement</a></li>
+        <li><a href="#u4-coldwar">Cold War and Post-Cold War Order</a></li>
+      </ol>
+    </div>
+
+    <!-- WWII -->
+    <div class="topic-section" id="u4-wwii">
+      <div class="topic-title"><span class="topic-num">1</span>Second World War (1939–1945)</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes of World War II</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Treaty of Versailles</div><div class="text">Germany blamed for WWI, forced to pay huge reparations, lost territory, military restrictions. Created anger and humiliation that Hitler exploited.</div></div>
+          <div class="cause-item"><div class="label">Rise of Hitler</div><div class="text">Hitler wanted to make Germany powerful again, expand territory, and reverse the Treaty of Versailles. His aggressive policies created international tensions.</div></div>
+          <div class="cause-item"><div class="label">Failure of League of Nations</div><div class="text">Had no military power; major countries ignored its decisions. Could not stop aggression by Germany, Italy, and Japan.</div></div>
+          <div class="cause-item"><div class="label">Expansionist Policies</div><div class="text">Germany occupied Austria and Czechoslovakia. Italy invaded Ethiopia. Japan invaded China. Each aggression unchallenged.</div></div>
+        </div>
+        <div class="info-card danger">
+          <h4>Immediate Cause</h4>
+          <p class="prose">On 1 September 1939, Germany invaded Poland. Britain and France declared war on Germany. World War II officially began.</p>
+        </div>
+        <div class="memory-trick">Treaty of Versailles → Hitler → Invasion of Poland → World War II</div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Major Events</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Blitzkrieg</div><div class="text">"Lightning war" — combined tanks, aircraft, and fast troops. Germany defeated several countries quickly.</div></div>
+          <div class="cause-item"><div class="label">Operation Barbarossa (1941)</div><div class="text">Germany invaded the Soviet Union. Major turning point — overextended Germany's forces.</div></div>
+          <div class="cause-item"><div class="label">Pearl Harbor (1941)</div><div class="text">Japan attacked US naval base. United States entered the war — changed the balance of power decisively.</div></div>
+          <div class="cause-item"><div class="label">D-Day (1944)</div><div class="text">Allied forces landed in Normandy, France. Beginning of liberation of Western Europe.</div></div>
+          <div class="cause-item"><div class="label">Atomic Bombs (1945)</div><div class="text">USA dropped bombs on Hiroshima and Nagasaki. Japan surrendered. War ended.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Consequences of World War II</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Human Loss</div><div class="text">More than 60 million people died. Most devastating conflict in human history. Holocaust killed 6 million Jews.</div></div>
+          <div class="cause-item"><div class="label">Economic Destruction</div><div class="text">Cities, industries, and infrastructure destroyed. Europe faced severe economic difficulties.</div></div>
+          <div class="cause-item"><div class="label">United Nations</div><div class="text">Established in 1945 to prevent future wars through international cooperation.</div></div>
+          <div class="cause-item"><div class="label">Cold War Begins</div><div class="text">USA and USSR emerged as superpowers. Their rivalry shaped global politics for 46 years.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- UNO -->
+    <div class="topic-section" id="u4-uno">
+      <div class="topic-title"><span class="topic-num">2</span>United Nations Organisation (UNO) ⭐ Very Important</div>
+
+      <div class="info-card highlight">
+        <h4>Establishment</h4>
+        <p class="prose">The United Nations was officially established on <strong>24 October 1945</strong>. Headquarters in New York City. Founded with 51 member nations. Created because countries wanted to prevent another global war after witnessing two devastating World Wars.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Objectives of the UN</div>
+        <ul class="bullet-list">
+          <li><strong>Maintain international peace and security</strong> — primary objective</li>
+          <li><strong>Protect human rights</strong> — promote equality, freedom, and dignity</li>
+          <li><strong>Promote international cooperation</strong> — on health, education, environment, development</li>
+          <li><strong>Improve living standards</strong> — support economic and social development worldwide</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Main Organs of the United Nations</div>
+        <div class="leaders-grid">
+          <div class="leader-card"><div class="leader-name">General Assembly</div><div class="leader-role">All Members</div><div class="leader-desc">All member nations participate. Each country has one equal vote. Main deliberative body.</div></div>
+          <div class="leader-card"><div class="leader-name">Security Council</div><div class="leader-role">Peace &amp; Security</div><div class="leader-desc">Most powerful organ. 5 permanent members (P5): USA, UK, France, Russia, China — each has veto power.</div></div>
+          <div class="leader-card"><div class="leader-name">International Court of Justice</div><div class="leader-role">Legal Disputes</div><div class="leader-desc">Settles disputes between countries. Located in The Hague, Netherlands.</div></div>
+          <div class="leader-card"><div class="leader-name">Economic &amp; Social Council</div><div class="leader-role">Development</div><div class="leader-desc">Promotes economic and social development worldwide.</div></div>
+          <div class="leader-card"><div class="leader-name">Secretariat</div><div class="leader-role">Administration</div><div class="leader-desc">Handles administrative functions. Headed by the Secretary-General.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Achievements and Limitations</div>
+        <div class="effects-split">
+          <div class="effect-col pos">
+            <h4>Achievements</h4>
+            <ul class="bullet-list">
+              <li>Peacekeeping missions worldwide</li>
+              <li>Humanitarian assistance during disasters</li>
+              <li>Health programs — WHO, vaccination drives</li>
+              <li>Universal Declaration of Human Rights</li>
+              <li>UNICEF — children's welfare</li>
+            </ul>
+          </div>
+          <div class="effect-col neg">
+            <h4>Limitations</h4>
+            <ul class="bullet-list">
+              <li>Veto power — P5 members can block any Security Council resolution</li>
+              <li>Major powers often disagree; political conflicts paralyze decision-making</li>
+              <li>No permanent standing army</li>
+              <li>Often ineffective in major conflicts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="memory-trick">World War II → Need for Peace → United Nations. Veto Power = biggest limitation of the UN.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CHINA 1949 -->
+    <div class="topic-section" id="u4-china1949">
+      <div class="topic-title"><span class="topic-num">3</span>Chinese Revolution of 1949</div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Background — Two Groups</div>
+        <div class="effects-split">
+          <div class="effect-col pos" style="border-top-color: var(--gold)">
+            <h4 style="color:var(--gold)">Nationalists (KMT)</h4>
+            <ul class="bullet-list">
+              <li>Led by Chiang Kai-shek</li>
+              <li>Supported by the USA</li>
+              <li>Viewed as corrupt and ineffective</li>
+            </ul>
+          </div>
+          <div class="effect-col neg" style="border-top-color: var(--red-accent)">
+            <h4>Communists (CCP)</h4>
+            <ul class="bullet-list">
+              <li>Led by Mao Zedong</li>
+              <li>Supported by USSR</li>
+              <li>Disciplined and well-organized</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Why Did Mao Win?</div>
+        <ul class="bullet-list">
+          <li><strong>Support of Peasants:</strong> Most Chinese were farmers; Mao promised land reforms and gained their overwhelming support</li>
+          <li><strong>Nationalist Weakness:</strong> Nationalist government seen as corrupt, ineffective, and disconnected from ordinary people</li>
+          <li><strong>Strong Communist Organization:</strong> The Communist Party was disciplined and well-organized with effective guerrilla strategy</li>
+        </ul>
+      </div>
+
+      <div class="info-card teal">
+        <h4>Result — 1949</h4>
+        <p class="prose">Mao Zedong established the <strong>People's Republic of China</strong> on 1 October 1949. The Nationalists retreated to Taiwan. China became one of the world's largest communist countries — significantly influencing Cold War politics.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CIVIL RIGHTS -->
+    <div class="topic-section" id="u4-civilrights">
+      <div class="topic-title"><span class="topic-num">4</span>Civil Rights Movement</div>
+
+      <div class="prose"><p>Although slavery had ended in the United States, African Americans still faced racial discrimination and segregation in schools, transportation, and public facilities. They did not enjoy equal rights.</p></div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Martin Luther King Jr. — The Most Important Leader</div>
+        <div class="info-card highlight">
+          <h4>Non-Violence Philosophy</h4>
+          <p class="prose">MLK believed social change should be achieved peacefully. Inspired by Mahatma Gandhi's principles of non-violent resistance.</p>
+        </div>
+        <div class="sub-sub-heading">Major Events Led by MLK</div>
+        <ul class="bullet-list">
+          <li><strong>Montgomery Bus Boycott (1955–56):</strong> African Americans boycotted segregated buses for 381 days; Supreme Court ruled segregation illegal</li>
+          <li><strong>March on Washington (1963):</strong> MLK delivered his famous "I Have a Dream" speech</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Malcolm X</div>
+        <div class="info-card">
+          <p class="prose">Malcolm X represented a more militant approach — "by any means necessary." He emphasized Black pride and self-defence. Later, after visiting Mecca, he adopted a more inclusive stance. Assassinated in 1965.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Achievements</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Civil Rights Act (1964)</div><div class="text">Prohibited discrimination based on race, color, religion, or national origin.</div></div>
+          <div class="cause-item"><div class="label">Voting Rights Act (1965)</div><div class="text">Protected voting rights for African Americans.</div></div>
+        </div>
+      </div>
+
+      <div class="info-card teal">
+        <h4>Significance</h4>
+        <p class="prose">The Civil Rights Movement transformed American society and advanced civil rights. MLK = non-violence + integration; Malcolm X = militant approach. Together they represent the full spectrum of the movement.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COLD WAR -->
+    <div class="topic-section" id="u4-coldwar">
+      <div class="topic-title"><span class="topic-num">5</span>Cold War and Post-Cold War Order ⭐ Most Important</div>
+
+      <div class="info-card highlight">
+        <h4>What Was the Cold War?</h4>
+        <p class="prose">The Cold War was a period of intense political, military, economic, and ideological rivalry between the <strong>United States</strong> (capitalism) and the <strong>Soviet Union</strong> (communism). It lasted roughly from <strong>1945 to 1991</strong>. Called "cold" because the two superpowers never fought each other directly.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Causes</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Ideological Differences</div><div class="text">USA: capitalism, private property, democracy. USSR: communism, state ownership, one-party rule. Both wanted their system to spread worldwide.</div></div>
+          <div class="cause-item"><div class="label">Mutual Suspicion</div><div class="text">Each side feared the other's expansion and intentions. Deep distrust from the beginning.</div></div>
+          <div class="cause-item"><div class="label">Power Vacuum</div><div class="text">Europe was weakened by WWII. USA and USSR became dominant powers filling the vacuum.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Major Features of the Cold War</div>
+        <div class="causes-grid">
+          <div class="cause-item"><div class="label">Arms Race</div><div class="text">Both countries built massive nuclear arsenals. Each tried to outdo the other in destructive power.</div></div>
+          <div class="cause-item"><div class="label">Space Race</div><div class="text">Soviet Union launched Sputnik (1957). United States landed humans on Moon (1969). Competition in space exploration.</div></div>
+          <div class="cause-item"><div class="label">Proxy Wars</div><div class="text">Instead of fighting directly, supported opposite sides in conflicts: Korean War, Vietnam War, Afghanistan.</div></div>
+          <div class="cause-item"><div class="label">Military Alliances</div><div class="text">NATO (USA-led) vs. Warsaw Pact (USSR-led). Europe divided into two armed camps.</div></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">End of the Cold War</div>
+        <div class="info-card teal">
+          <h4>1991 — USSR Collapsed</h4>
+          <p class="prose">Soviet leader Gorbachev introduced Glasnost (openness) and Perestroika (restructuring). East European communist regimes fell 1989 — Berlin Wall came down (9 November 1989). The Soviet Union officially collapsed on 25 December 1991. Cold War ended. USA became the sole superpower.</p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-heading">Post-Cold War Order</div>
+        <ul class="bullet-list">
+          <li>USA became the world's sole superpower (unipolar world)</li>
+          <li>Globalisation accelerated</li>
+          <li>New threats emerged: terrorism (9/11, 2001), regional conflicts</li>
+          <li>China's rise created a new multipolar world</li>
+          <li>Russia-Ukraine tensions resurfaced in recent years</li>
+        </ul>
+      </div>
+
+      <div class="memory-trick">Capitalism vs Communism = Cold War. Arms Race + Space Race + Proxy Wars = Cold War features. 1991 USSR collapsed = Cold War ended.</div>
+    </div>
+
+  </div><!-- end content-wrapper -->
+
+  <div class="questions-section">
+    <div class="content-wrapper" style="padding-bottom:0">
+      <h3>⭐ Important Exam Questions — Unit IV</h3>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.1</span>
+          <span class="q-text">Explain the causes, major events, and consequences of World War II.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Causes</div>
+          <ul><li>Treaty of Versailles humiliated Germany — created resentment Hitler exploited</li><li>Rise of Hitler — wanted to expand Germany and reverse Versailles</li><li>Failure of League of Nations — no military power, ignored by major nations</li><li>Expansionist policies by Germany, Italy, Japan — all unchecked</li><li>Immediate: Germany invaded Poland, 1 September 1939</li></ul>
+          <div class="ans-heading">Major Events</div>
+          <ul><li>Blitzkrieg — Germany's lightning war conquered Europe quickly</li><li>Operation Barbarossa (1941) — Germany invaded USSR</li><li>Pearl Harbor (1941) — Japan attacked USA; USA entered war</li><li>D-Day (1944) — Allied landing in Normandy; liberation of Europe began</li><li>Atomic bombs on Hiroshima and Nagasaki (1945) — Japan surrendered; war ended</li></ul>
+          <div class="ans-heading">Consequences</div>
+          <ul><li>60+ million dead — deadliest conflict in history; Holocaust (6 million Jews)</li><li>Europe economically devastated</li><li>United Nations established 1945</li><li>USA and USSR emerged as superpowers — Cold War began</li><li>Decolonisation wave across Asia and Africa</li></ul>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.2</span>
+          <span class="q-text">Explain the objectives, achievements, and limitations of the United Nations.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Background &amp; Formation</div>
+          <div class="ans-text">After two devastating World Wars, countries realized international cooperation was necessary to maintain peace. UN officially established 24 October 1945, with 51 founding members. HQ in New York City.</div>
+          <div class="ans-heading">Objectives</div>
+          <ul><li>Maintain international peace and security</li><li>Protect human rights and fundamental freedoms</li><li>Promote international cooperation in economic, social, and cultural fields</li><li>Improve living standards worldwide</li></ul>
+          <div class="ans-heading">Main Organs</div>
+          <ul><li>General Assembly — all members, one vote each</li><li>Security Council — 5 permanent members (USA, UK, France, Russia, China) with veto power</li><li>International Court of Justice — legal disputes between nations</li><li>Secretariat — administrative functions</li></ul>
+          <div class="ans-heading">Achievements</div>
+          <ul><li>Peacekeeping missions reducing conflicts worldwide</li><li>Humanitarian assistance during disasters</li><li>WHO, UNICEF, UNESCO — global health, children, education</li><li>Universal Declaration of Human Rights (1948)</li></ul>
+          <div class="ans-heading">Limitations</div>
+          <ul><li>Veto power of P5 often paralyzes the Security Council</li><li>No permanent standing military force</li><li>Major powers often ignore UN decisions</li><li>Ineffective in many major conflicts (Korea, Vietnam, Israel-Palestine)</li></ul>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.3</span>
+          <span class="q-text">Explain the causes, features, and end of the Cold War.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Introduction</div>
+          <div class="ans-text">The Cold War was the ideological and political rivalry between the USA (capitalism) and USSR (communism) from 1945 to 1991. Called "cold" because the superpowers never fought each other directly.</div>
+          <div class="ans-heading">Causes</div>
+          <ul><li>Ideological differences — capitalism vs. communism; both wanted global spread</li><li>Mutual suspicion and distrust after WWII</li><li>Power vacuum — weakened Europe left USA and USSR as dominant powers</li></ul>
+          <div class="ans-heading">Key Features</div>
+          <ul><li>Arms race — nuclear weapons buildup</li><li>Space race — Sputnik (1957) to Moon landing (1969)</li><li>Proxy wars — Korea, Vietnam, Afghanistan</li><li>Military alliances — NATO vs. Warsaw Pact</li></ul>
+          <div class="ans-heading">End</div>
+          <ul><li>Gorbachev's reforms: Glasnost (openness) and Perestroika (restructuring)</li><li>Berlin Wall fell November 1989</li><li>USSR collapsed December 1991</li><li>USA became sole superpower; Cold War officially ended</li></ul>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-hdr" onclick="toggleQ(this)">
+          <span class="q-num">Q.4</span>
+          <span class="q-text">Explain the Civil Rights Movement with reference to Martin Luther King Jr. and Malcolm X.</span>
+          <span class="q-arrow">▾</span>
+        </div>
+        <div class="question-body">
+          <div class="ans-heading">Background</div>
+          <div class="ans-text">After the end of slavery in the USA, African Americans still faced racial discrimination and segregation under Jim Crow laws — in schools, transport, and public facilities. The Civil Rights Movement demanded equal rights and dignity.</div>
+          <div class="ans-heading">Martin Luther King Jr.</div>
+          <ul><li>Believed in non-violence and peaceful protest (inspired by Gandhi)</li><li>Montgomery Bus Boycott (1955-56) — 381-day boycott; Supreme Court ruled bus segregation unconstitutional</li><li>March on Washington (1963) — "I Have a Dream" speech</li><li>Nobel Peace Prize (1964); assassinated 1968</li></ul>
+          <div class="ans-heading">Malcolm X</div>
+          <ul><li>More militant approach — "by any means necessary"</li><li>Emphasized Black pride and self-defence</li><li>Later became more moderate after visiting Mecca</li><li>Assassinated 1965</li></ul>
+          <div class="ans-heading">Achievements</div>
+          <ul><li>Civil Rights Act (1964) — racial discrimination in public places prohibited</li><li>Voting Rights Act (1965) — protected voting rights</li><li>Transformed American society significantly</li></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Study  &nbsp;·&nbsp; Padh le Ullu &nbsp;·&nbsp; <span>All Units Covered</span></p>
+</footer>
+
+<script>
+function showPage(id, el){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  return false;
+}
+
+function toggleQ(hdr){
+  const body = hdr.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  hdr.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
